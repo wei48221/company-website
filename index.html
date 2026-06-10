@@ -213,7 +213,7 @@
             top: -2px;
         }
 
-        /* Features Section (Dark Accent) */
+        /* Features Section */
         .bg-features {
             background-color: var(--bg-light);
             border-radius: 20px;
@@ -241,7 +241,7 @@
             margin-bottom: 1rem;
         }
 
-        /* Tech Spec Table */
+        /* Tables Basic */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -262,11 +262,62 @@
             background-color: var(--primary-color);
             color: var(--text-light);
             font-weight: 600;
+        }
+
+        /* Product Spec Table Specific */
+        .product-detail table th {
             width: 30%;
         }
 
-        tr:last-child td {
-            border-bottom: none;
+        /* Project Record Section */
+        .record-table-container {
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        .record-table {
+            min-width: 600px;
+        }
+
+        .record-table th {
+            background-color: #0f2b46;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 1rem;
+        }
+
+        .record-table td {
+            padding: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .record-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .record-table tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.7rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .badge-tech {
+            background-color: rgba(29, 78, 216, 0.1);
+            color: var(--secondary-color);
+            border: 1px solid rgba(29, 78, 216, 0.2);
+        }
+
+        .badge-public {
+            background-color: rgba(13, 148, 136, 0.1);
+            color: #0d9488;
+            border: 1px solid rgba(13, 148, 136, 0.2);
         }
 
         /* Contact Block */
@@ -337,6 +388,7 @@
                     <li><a href="#services">服務內容</a></li>
                     <li><a href="#features">服務特點</a></li>
                     <li><a href="#cases">應用案例</a></li>
+                    <li><a href="#records">合作實績</a></li>
                     <li><a href="#contact">聯絡我們</a></li>
                 </ul>
             </nav>
@@ -383,7 +435,7 @@
             <div class="grid-3">
                 <div class="card" style="border-top-color: var(--accent-color)">
                     <h3>客製化 (Customization)</h3>
-                    <p style="color: var(--text-dark)">依需求提供全方位客製化硬體裝置 (Hardware)、韌體 (Firmware)、通訊系統 (Communication System) 及雲端方案 (Cloud Solution)。</p>
+                    <p style="color: var(--text-dark)">依需求提供全方位客製化硬體裝置、韌體、通訊系統及雲端方案。</p>
                 </div>
                 <div class="card" style="border-top-color: var(--accent-color)">
                     <h3>一站式 (Turnkey)</h3>
@@ -440,20 +492,20 @@
 
             <div class="product-detail">
                 <h4>AI 監視眼 (多模態大語言模型應用)</h4>
-                <p style="margin-bottom: 1rem;"><strong>核心功能：</strong>顛覆傳統傳統 AI 影像識別需耗時數月標註萬張照片與模型訓練的高昂成本。本系統利用最新多模態大語言模型 (MLLMs，如 OpenAI, Gemini, Grok)，實現「當天設定，當天上線」的無痛升級。</p>
+                <p style="margin-bottom: 1rem;"><strong>核心功能：</strong>本系統利用最新多模態大語言模型 (MLLMs)，實現「當天設定，當天上線」的工區影像辨識防護防範升級。</p>
                 <table>
                     <tr><th>支援格式</th><td>支援 RTSP 遠端存取的既有傳統連網 CCTV 系統</td></tr>
                     <tr><th>通訊通知</th><td>整合 Telegram 及手機簡訊即時發送警報</td></tr>
                     <tr><th>現場連動</th><td>連動現場聲光告警設備</td></tr>
-                    <tr><th>判讀場景</th><td>未穿戴防護裝備(安全帽/背心)、危險攀爬、違規吸菸、禁區闖入(起重機吊臂下)、人員跌倒、明火與煙霧、越界入侵、高空作業安全帶辨識、工程車輛危害預防</td></tr>
+                    <tr><th>判讀場景</th><td>未穿戴防護裝備、危險攀爬、違規吸菸、禁區闖入、人員跌倒、明火煙霧、越界入侵、高空作業安全帶辨識</td></tr>
                 </table>
             </div>
         </div>
 
         <div class="grid-3" style="margin-top: 3rem;">
             <div class="card" style="border-top-color: var(--primary-color)">
-                <h3>戶外電信機箱與設備監控</h3>
-                <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">透過 RS-232/RS485 介面串接 Gateway，支援 WiFi, Ethernet, 4G, LPWAN 將機箱數據回傳至資料中心：</p>
+                <h3>戶外電信機箱設備監控</h3>
+                <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">透過 RS-232/RS485 介面串接 Gateway，支援 WiFi, Ethernet, 4G, LPWAN 回傳至資料中心：</p>
                 <ul style="font-size: 0.9rem;">
                     <li><strong>PDU / CBP：</strong>電源分配與斷路器保護監控</li>
                     <li><strong>PFC / BMS：</strong>PWM 風扇控制與電池監控系統</li>
@@ -461,11 +513,11 @@
             </div>
             <div class="card" style="border-top-color: var(--primary-color)">
                 <h3>配電箱門禁與供電監控</h3>
-                <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">可大規模監視 200 台以上電箱：</p>
+                <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">大規模監視 200 台以上電箱：</p>
                 <ul style="font-size: 0.9rem;">
                     <li>AC110V / AC220V 側箱門啟閉與供電狀態動態顯示</li>
                     <li>支援箱門電磁鎖遠端安全上鎖/解鎖</li>
-                    <li>雲端後台集中控制語音播放（MP3 CMD）與繼電器開關</li>
+                    <li>雲端後台集中控制語音播放與繼電器開關</li>
                 </ul>
             </div>
             <div class="card" style="border-top-color: var(--primary-color)">
@@ -473,9 +525,46 @@
                 <ul style="font-size: 0.9rem;">
                     <li><strong>綜合顯示看板：</strong>整合安衛影片、多國語言安衛跑馬燈與施工電梯樓層即時顯示。</li>
                     <li><strong>雲端 CCTV 監看：</strong>支援電腦版與手機版，跨工區集中觀看 LIVE 影像。</li>
-                    <li><strong>4G 移動式攝影機：</strong>2.2KG 輕便機身含 10 小時充電電池，免佈線支援 RTSP/NVR 錄影，具備 IP66 防水。</li>
+                    <li><strong>4G 移動式攝影機：</strong>2.2KG 輕便機身含 10 小時充電電池，免佈線支援 RTSP/NVR 錄影。</li>
                 </ul>
             </div>
+        </div>
+    </section>
+
+    <section id="records">
+        <h2 class="section-title">實績</h2>
+        <div class="record-table-container">
+            <table class="record-table">
+                <thead>
+                    <tr>
+                        <th style="width: 20%">行業別</th>
+                        <th style="width: 35%">客戶名稱</th>
+                        <th style="width: 45%">導入之系統或設備</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge badge-tech">公共工程與交通建設</span></td>
+                        <td><strong>大陸工程</strong></td>
+                        <td>主動式危害告知器, 垃圾管道閘門狀態監視系統, 熱危害告知器, 灑水風扇控制器, 施工電梯樓層顯示系統, 電箱狀態監控系統, AI監視眼</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-tech">公共工程</span></td>
+                        <td><strong>根基營造</strong></td>
+                        <td>熱危害告知器、主動式危害告知器</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-public">住宅與辦公大樓</span></td>
+                        <td><strong>東源營造</strong></td>
+                        <td>熱危害告知器</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-public">交通建設</span></td>
+                        <td><strong>遠揚營造</strong></td>
+                        <td>熱危害告知器</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
