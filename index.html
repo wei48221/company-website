@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>偉文工作室有限公司 | Connect Everything</title>
+    <style>
+        :root {
+            --primary-color: #0f2b46;
+            --secondary-color: #1d4ed8;
+            --accent-color: #00f2fe;
+            --text-dark: #334155;
+            --text-light: #f8fafc;
+            --bg-light: #f1f5f9;
+            --bg-dark: #0b1329;
+            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(15, 43, 70, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            display: block;
+            font-weight: normal;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--bg-dark));
+            color: var(--text-light);
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top right, #ffffff 50%, transparent 50%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px solid var(--accent-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            color: var(--accent-color);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Core Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
+        }
+
+        /* Cards Style */
+        .card {
+            background: #ffffff;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border-top: 5px solid var(--secondary-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .card ul {
+            list-style-type: none;
+        }
+
+        .card ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .card ul li::before {
+            content: "•";
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        /* Features Section (Dark Accent) */
+        .bg-features {
+            background-color: var(--bg-light);
+            border-radius: 20px;
+            padding: 4rem;
+            margin-top: 2rem;
+        }
+
+        /* Product Showcase */
+        .product-section {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .product-detail {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .product-detail h4 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Tech Spec Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            font-weight: 600;
+            width: 30%;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Contact Block */
+        .contact-info {
+            background: linear-gradient(135deg, var(--primary-color), var(--bg-dark));
+            color: var(--text-light);
+            border-radius: 16px;
+            padding: 3rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-item p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            color: #64748b;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            border-top: 1px solid #1e293b;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav ul li {
+                margin: 0 1rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .bg-features {
+                padding: 2rem 1rem;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                偉文工作室有限公司
+                <span>Connect Everything</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#services">服務內容</a></li>
+                    <li><a href="#features">服務特點</a></li>
+                    <li><a href="#cases">應用案例</a></li>
+                    <li><a href="#contact">聯絡我們</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="tagline">Connect Everything</div>
+        <h1>物聯網與嵌入式系統開發專家</h1>
+        <p>專業客製化軟硬體整合整合方案 ＆ Turnkey 一站式服務</p>
+    </div>
+
+    <section id="services">
+        <h2 class="section-title">服務內容</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>物聯網系統開發</h3>
+                <ul>
+                    <li><strong>機構設計：</strong>外觀設計、打樣、量產支援</li>
+                    <li><strong>硬體開發：</strong>專業電路設計、PCB 佈局及打件生產</li>
+                    <li><strong>軟體開發：</strong>嵌入式韌體編寫與優化</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>雲端與伺服器架設</h3>
+                <ul>
+                    <li><strong>雲端系統開發：</strong>高效能資料庫建置、直覺式操控介面設計</li>
+                    <li><strong>伺服器設置：</strong>在地化本地伺服器架設、彈性化雲端伺服器建置</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>規畫設計與培訓</h3>
+                <ul>
+                    <li><strong>規劃設計顧問：</strong>為企業量身打造高可靠度的架構藍圖</li>
+                    <li><strong>專業教育訓練：</strong>技術無縫轉移，提升團隊物聯網實戰力</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" style="padding-top: 0;">
+        <div class="bg-features">
+            <h2 class="section-title">服務特點</h2>
+            <div class="grid-3">
+                <div class="card" style="border-top-color: var(--accent-color)">
+                    <h3>客製化 (Customization)</h3>
+                    <p style="color: var(--text-dark)">依需求提供全方位客製化硬體裝置 (Hardware)、韌體 (Firmware)、通訊系統 (Communication System) 及雲端方案 (Cloud Solution)。</p>
+                </div>
+                <div class="card" style="border-top-color: var(--accent-color)">
+                    <h3>一站式 (Turnkey)</h3>
+                    <p style="color: var(--text-dark)">提供單一窗口服務，大幅簡化業主與跨領域技術對接時所需的繁瑣溝通介面。</p>
+                </div>
+                <div class="card" style="border-top-color: var(--accent-color)">
+                    <h3>高競爭力建置成本</h3>
+                    <p style="color: var(--text-dark)">採用成熟量產的硬體模組、開源軟體系統及世界級雲端基礎設施，顯著降低系統整體建置成本與維護費用。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cases" class="product-section">
+        <h2 class="section-title">應用案例與核心產品</h2>
+        
+        <div class="grid-2">
+            <div class="product-detail">
+                <h4>危害告知器 (安衛設備)</h4>
+                <p style="margin-bottom: 1rem;"><strong>核心功能：</strong>以超音波精準偵測人體，當測得距離低於預設之告警觸發門檻時，主動以語音、閃燈或蜂鳴器等方式發出警報。</p>
+                <table>
+                    <tr><th>偵測距離 / 解析度</th><td>0 ~ 300 公分 / 1 公分</td></tr>
+                    <tr><th>告警觸發門檻</th><td>可調整 (30 至 300 公分，每 30 公分為一間距)</td></tr>
+                    <tr><th>輸出接口</th><td>乾接點 × 1、外接喇叭插座 × 1、內建喇叭 × 1</td></tr>
+                    <tr><th>尺寸 / 重量</th><td>12.5cm × 8cm × 3.3cm / 小於 180 公克</td></tr>
+                    <tr><th>輸入電源 / 接口</th><td>DC 5V, 1A / Micro USB (支持電壓 DC 12V~24V 外接轉接)</td></tr>
+                </table>
+            </div>
+
+            <div class="product-detail">
+                <h4>接近警告系統</h4>
+                <p style="margin-bottom: 1rem;"><strong>核心功能：</strong>專為施工吊籃與特殊車輛設計。以超音波偵測警告器與障礙物距離並發出語音/閃燈警報，測得數據可以無線方式即時傳送給多台監工接收器。</p>
+                <table>
+                    <tr><th>偵測距離 / 解析度</th><td>0 ~ 400 公分 / 1 公分</td></tr>
+                    <tr><th>告警觸發門檻</th><td>可調整 (40 至 400 公分，每 40 公分為一間距)</td></tr>
+                    <tr><th>系統成員</th><td>吊籃(接近警告器)、駕駛室(接收器+高音警報器)、監工人員(接收器)</td></tr>
+                    <tr><th>尺寸 / 重量</th><td>12.5cm × 8cm × 3.3cm / 小於 180 公克</td></tr>
+                    <tr><th>輸入電源 / 接口</th><td>DC 5V, 1A / Micro USB</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 2rem;">
+            <div class="product-detail">
+                <h4>熱危害告知器系統</h4>
+                <p style="margin-bottom: 1rem;"><strong>核心功能：</strong>免聯網內建溫濕度感應及熱指數表。提供四色指示燈一目瞭然展示熱危害，具備中、越、泰、英四國語言播報，並可連動灑水/風扇控制器及加壓馬達進行降溫控制。</p>
+                <table>
+                    <tr><th>輸入電源</th><td>AC 110V ~ 240V, 50~60Hz (市電直插)</td></tr>
+                    <tr><th>音訊支援</th><td>內建喇叭，支援外接擴大器輸出</td></tr>
+                    <tr><th>通訊介面</th><td>WiFi, Bluetooth, LoRa (選配)</td></tr>
+                    <tr><th>系統擴充</th><td>可與危害告知器搭配，在人員經過時主動播報環境狀態</td></tr>
+                </table>
+            </div>
+
+            <div class="product-detail">
+                <h4>AI 監視眼 (多模態大語言模型應用)</h4>
+                <p style="margin-bottom: 1rem;"><strong>核心功能：</strong>顛覆傳統傳統 AI 影像識別需耗時數月標註萬張照片與模型訓練的高昂成本。本系統利用最新多模態大語言模型 (MLLMs，如 OpenAI, Gemini, Grok)，實現「當天設定，當天上線」的無痛升級。</p>
+                <table>
+                    <tr><th>支援格式</th><td>支援 RTSP 遠端存取的既有傳統連網 CCTV 系統</td></tr>
+                    <tr><th>通訊通知</th><td>整合 Telegram 及手機簡訊即時發送警報</td></tr>
+                    <tr><th>現場連動</th><td>連動現場聲光告警設備</td></tr>
+                    <tr><th>判讀場景</th><td>未穿戴防護裝備(安全帽/背心)、危險攀爬、違規吸菸、禁區闖入(起重機吊臂下)、人員跌倒、明火與煙霧、越界入侵、高空作業安全帶辨識、工程車輛危害預防</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 3rem;">
+            <div class="card" style="border-top-color: var(--primary-color)">
+                <h3>戶外電信機箱與設備監控</h3>
+                <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">透過 RS-232/RS485 介面串接 Gateway，支援 WiFi, Ethernet, 4G, LPWAN 將機箱數據回傳至資料中心：</p>
+                <ul style="font-size: 0.9rem;">
+                    <li><strong>PDU / CBP：</strong>電源分配與斷路器保護監控</li>
+                    <li><strong>PFC / BMS：</strong>PWM 風扇控制與電池監控系統</li>
+                </ul>
+            </div>
+            <div class="card" style="border-top-color: var(--primary-color)">
+                <h3>配電箱門禁與供電監控</h3>
+                <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">可大規模監視 200 台以上電箱：</p>
+                <ul style="font-size: 0.9rem;">
+                    <li>AC110V / AC220V 側箱門啟閉與供電狀態動態顯示</li>
+                    <li>支援箱門電磁鎖遠端安全上鎖/解鎖</li>
+                    <li>雲端後台集中控制語音播放（MP3 CMD）與繼電器開關</li>
+                </ul>
+            </div>
+            <div class="card" style="border-top-color: var(--primary-color)">
+                <h3>綜合看板、CCTV 與行動攝影機</h3>
+                <ul style="font-size: 0.9rem;">
+                    <li><strong>綜合顯示看板：</strong>整合安衛影片、多國語言安衛跑馬燈與施工電梯樓層即時顯示。</li>
+                    <li><strong>雲端 CCTV 監看：</strong>支援電腦版與手機版，跨工區集中觀看 LIVE 影像。</li>
+                    <li><strong>4G 移動式攝影機：</strong>2.2KG 輕便機身含 10 小時充電電池，免佈線支援 RTSP/NVR 錄影，具備 IP66 防水。</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-info">
+            <h3>聯絡資訊 | Contact Us</h3>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem;">偉文工作室有限公司</p>
+                    <p><strong>統一編號：</strong>83458329</p>
+                    <p><strong>核心技術：</strong>物聯網 (IoT)、嵌入式系統 (Embedded Systems)</p>
+                </div>
+                <div class="contact-item">
+                    <p><strong>負責人：</strong>黃偉雄 (Wei Hsiung Huang)</p>
+                    <p><strong>電子信箱：</strong><a href="mailto:wei48221@gmail.com" style="color: var(--accent-color); text-decoration: none;">wei48221@gmail.com</a></p>
+                    <p><strong>聯絡電話：</strong>+886-928608076</p>
+                </div>
+                <div class="contact-item">
+                    <p><strong>公司地址：</strong></p>
+                    <p>台北市建國北路三段92號3樓</p>
+                    <p style="color: #94a3b8; font-size: 0.9rem;">3F, No. 92, Jianguo N. Rd. Sec. 3, Taipei, TAIWAN</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 偉文工作室有限公司 WW Studio. All Rights Reserved. | Connect Everything</p>
+    </footer>
+
+</body>
+</html>
